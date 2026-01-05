@@ -3,60 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoteFlow - Workdesk Notes Re-imagined</title>
+    <title>BinahGlobal - Re-imagined</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar fade-in">
         <div class="logo">
-            <i class="fa-solid fa-asterisk logo-icon"></i>
-            <span>NoteFlow</span>
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                <path d="M256,153.9A102.1,102.1,0,1,0,358.1,256,102.23,102.23,0,0,0,256,153.9Z"></path>
+                <circle cx="402.59" cy="116.45" r="46.52"></circle>
+                <path d="M459.86,163.2l-1.95-4.28-3.11,3.52a70,70,0,0,1-28.06,19.32l-3,1.1,1.22,2.93A181.43,181.43,0,0,1,439,256c0,100.92-82.1,183-183,183S73,356.92,73,256,155.08,73,256,73a180.94,180.94,0,0,1,78.43,17.7L337.3,92l1.25-2.92A70.19,70.19,0,0,1,359.21,62l3.67-2.93L358.71,57A221.61,221.61,0,0,0,256,32C132.49,32,32,132.49,32,256S132.49,480,256,480,480,379.51,480,256A222.19,222.19,0,0,0,459.86,163.2Z"></path>
+            </svg>
+            <span>binahglobal</span>
         </div>
         
         <ul class="nav-links">
-            <li><a href="#">Product</a></li>
-            <li><a href="#">Solutions</a></li>
+            <li><a href="#">Features</a></li>
             <li><a href="#">Pricing</a></li>
-            <li><a href="#">Enterprise</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Reviews</a></li>
         </ul>
 
         <div class="nav-actions">
-            <a href="#" class="login-btn">Login</a>
-            <a href="#" class="get-started-btn">Get Started &rightarrow;</a>
+            <a href="#" class="btn-pill">Contact Us &rightarrow;</a>
         </div>
     </nav>
 
-    <header class="hero">
-        
-        <div class="badge">
-            <span class="dot"></span>
-            NoteFlow AI 2.0 is now live
+    <main class="hero">
+        <div class="badge fade-in-up delay-1">
+            <span class="status-dot"></span>
+            BinahGlobal | Designed to Perform Digital Growth
         </div>
 
-        <h1>
-            Workdesk Notes <br>
-            <span class="highlight">Re-imagined</span>
+        <h1 class="hero-heading">
+            <span class="heading-text">Designed to Perform</span>
+            <div class="heading-underline"></div>
         </h1>
 
-        <p class="hero-description">
-            Turn your disorganized thoughts into structured workflows. NoteFlow listens, understands, and organizes your workdesk activity into actionable tasks automatically.
+        <p class="hero-desc fade-in-up delay-3">
+            means turning your ideas and ambition into measurable digital growth. With a focused, detail-driven team, we stand beside you from strategy to execution designing digital marketing experiences that deliver real results.
         </p>
 
-        <div class="cta-group">
+        <div class="cta-container fade-in-up delay-4">
             <a href="#" class="btn-primary">
-                Start Automating &rightarrow;
+                Start Automating <i class="fa-solid fa-arrow-right"></i>
             </a>
             <a href="#" class="btn-secondary">
                 <i class="fa-solid fa-play"></i> Watch Demo
             </a>
         </div>
+    </main>
 
-    </header>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const text = document.querySelector(".heading-text");
+            const chars = text.textContent.split("");
+            text.innerHTML = "";
+            chars.forEach(char => {
+                const span = document.createElement("span");
+                span.className = "char";
+                span.textContent = char === " " ? "\u00A0" : char;
+                text.appendChild(span);
+            });
+
+            const allChars = gsap.utils.toArray(".hero-heading .char");
+
+            gsap.set(allChars, { y: 200, opacity: 0 });
+
+            gsap.to(allChars, {
+                y: 0,
+                opacity: 1,
+                duration: 2,
+                stagger: 0.05,
+                ease: "power3.out"
+            });
+
+            const underline = document.querySelector(".heading-underline");
+            gsap.set(underline, { width: 0, opacity: 0 });
+            gsap.to(underline, {
+                width: "70%",
+                opacity: 1,
+                duration: 2,
+                ease: "power3.out",
+                delay: 1.2
+            });
+        });
+    </script>
 
 </body>
 </html>
